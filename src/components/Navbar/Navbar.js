@@ -1,22 +1,23 @@
-import React,{Component} from "react";
+import React from "react";
+import {useState} from "react"
 import { MenuItems } from "./MenuItems";
 import { Button } from "../Button";
 import './Navbar.css';
 
 
-class Navbar extends Component{
-    state={clicked:false}
-    handleClick=()=>{
-        this.setState({clicked: !this.state.clicked})
+const Navbar =({setShow,size})=>{
+    const [state,setState]=useState({clicked:false});
+    const handleClick=()=>{
+        setState({clicked: !state.clicked})
     }
-    render(){
+    
     return(
         <nav className="navbarItems">
-            <h1 className="navbar-logo">React<i className="fab fa-react"></i></h1>
-            <div className="menu-icon" onClick={this.handleClick}>
-                <i className={this.state.clicked ? 'fas fa-times':'fas fa-bars'}></i>
+            <h1 className="navbar-logo" onClick={() => setShow(true)}>React<i className="fab fa-react"></i></h1>
+            <div className="menu-icon" onClick={handleClick}>
+                <i className={state.clicked ? 'fas fa-times':'fas fa-bars'}></i>
             </div>
-            <ul className={this.state.clicked ? 'nav-menu active' : 'nav-menu'}>
+            <ul className={state.clicked ? 'nav-menu active' : 'nav-menu'}>
                 {MenuItems.map((item,index) => {
                     return (
                         <li key={index}>
@@ -28,9 +29,16 @@ class Navbar extends Component{
                 })}
                 
             </ul>
+            <div className="cart" onClick={() => setShow(false)}>
+            <span>
+            <i className="fas fa-cart-plus"></i>
+          </span>
+          <span>{size}</span>
+            </div>
             <Button>Sign Up</Button>
+           
         </nav>
     );
 };
-};
+
 export default Navbar;

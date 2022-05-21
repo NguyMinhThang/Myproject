@@ -46,6 +46,24 @@
 .menu-icon{
     display: none;
 }
+.cart {
+    cursor: pointer;
+    margin-right: 20px;
+}
+.cart span:nth-child(1) {
+    font-size: 2rem;
+    color: white;
+  }
+  .cart span:nth-child(2) {
+    padding: 0 3px;
+    background-color: red;
+    color: white;
+    font-weight: bolx;
+    border-radius: 5px;
+    position: relative;
+    top: -15px;
+  }
+
 @media screen and (max-width:960px){
     .navbarItems{
         position: relative;
